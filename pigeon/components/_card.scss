@@ -1,8 +1,12 @@
+@use "sass:math";
+
 .card {
   display: block;
   padding: $base-padding;
   border: $base-border-thickness solid #ddd;
   box-shadow: $base-box-shadow;
+  border-radius: math.div($base-border-radius, 4);
+  background-color: $tertiary;
 
   .card-title {
     font-size: $base-font-size;
@@ -18,3 +22,8 @@
     }
   }
 }
+
+// @debug "hello ninjas";
+// @debug math.div($base-border-radius, 4);
+// @debug math.floor(4.5);
+// @debug math.max(1px, 20px, 15px, 12px);

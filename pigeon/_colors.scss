@@ -1,0 +1,44 @@
+$theme_colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "tertiary": $tertiary,
+  "blue-light": $blue-light,
+  "blue-semi-dark": $blue-semi-dark,
+  "blue-dark": $blue-dark,
+  "charcoal": $charcoal,
+  "black": black,
+  "white": white,
+);
+
+@each $key, $val in $theme_colors {
+  .text-#{$key} {
+    color: $val;
+  }
+
+  .bg-#{$key} {
+    background-color: $val;
+  }
+
+  @if ($val != black and $val != white) {
+    // light variations
+    @for $i from 1 through 9 {
+      .text-#{$key}-light-#{$i} {
+        color: mix(#fff, $val, $i * 10%);
+      }
+      .bg-#{$key}-light-#{$i} {
+        background-color: mix(#fff, $val, $i * 10%);
+      }
+    }
+
+    // dark variations
+
+    @for $i from 1 through 9 {
+      .text-#{$key}-dark-#{$i} {
+        color: mix(black, $val, $i * 10%);
+      }
+      .bg-#{$key}-dark-#{$i} {
+        background-color: mix(black, $val, $i * 10%);
+      }
+    }
+  }
+}
